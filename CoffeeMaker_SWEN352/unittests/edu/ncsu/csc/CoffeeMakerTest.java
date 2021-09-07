@@ -10,6 +10,7 @@ import coffeemaker.CoffeeMaker;
 import coffeemaker.exceptions.InventoryException;
 import junit.framework.TestCase;
 //Hi mom
+//yo what's up
 public class CoffeeMakerTest extends TestCase
 {	
 	@Before
