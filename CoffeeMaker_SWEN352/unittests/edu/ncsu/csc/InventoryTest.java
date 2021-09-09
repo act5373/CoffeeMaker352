@@ -71,7 +71,7 @@ class InventoryTest extends TestCase{
 		//*****************************
 
 	@Test
-	public void addChocolate1() {
+	public void addChocolateString1() {
 		
 		try{
 			inventory.addChocolate("1");
@@ -87,5 +87,31 @@ class InventoryTest extends TestCase{
 	public void testIsEnoughAtZero()
 	{
 		inventory.enoughIngredients(null);
+	}
+
+	@Test
+	public void addChocolateStringOne() {
+		
+		try{
+			inventory.addChocolate("one");
+		}
+		catch(InventoryException e) {
+			assertEquals(e.getMessage(), "Units of chocolate must be a positive integer");
+		}
+		
+		assertEquals(15, inventory.getChocolate());
+	}
+	
+	@Test
+	public void addChocolateNegative() {
+		
+		try{
+			inventory.addChocolate("-1");
+		}
+		catch(InventoryException e) {
+			assertEquals(e.getMessage(), "Units of chocolate must be a positive integer");
+		}
+		
+		assertEquals(15, inventory.getChocolate());
 	}
 }
