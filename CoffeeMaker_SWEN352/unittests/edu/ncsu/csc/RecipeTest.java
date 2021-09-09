@@ -39,7 +39,51 @@ class RecipeTest extends TestCase
 	//*************************
 	@Test
 	public void testGetName() {
-		assertEquals("", recipe.getName()); // arguments: error message, arg1, arg2
+		assertEquals(recipe.getName(), "");
+	}
+	
+	@Test
+	public void testSetnameValid() {
+		recipe.setName("AppleSauce");
+		
+		assertEquals(recipe.getName(), "AppleSauce");
+	}
+	
+	@Test
+	public void testSetnameValidBlank() {
+		recipe.setName("");
+		
+		assertEquals(recipe.getName(), "");
+	}
+	
+	@Test
+	public void testSetnameValidNull() {
+		recipe.setName(null);
+		
+		assertEquals(recipe.getName(), "");
+	}
+	
+	@Test
+	public void testSetnameValidNameToNull() {
+		recipe.setName("Apples");
+		recipe.setName(null);
+		
+		assertEquals(recipe.getName(), "Apples");
+	}
+	
+	//*************************
+	// toString Test cases
+	//*************************
+	@Test
+	public void testToString() {
+		assertEquals(recipe.toString(), "");
+	}
+	
+	@Test
+	public void testToStringNotEmpty() {
+		recipe.setName("AppleSauce");
+		
+		assertEquals(recipe.toString(), "AppleSauce");
 	}
 	
 	//*************************
@@ -48,7 +92,76 @@ class RecipeTest extends TestCase
 	
 	@Test
 	public void testGetPrice() {
-		assertEquals(0, recipe.getPrice());
+		assertEquals(recipe.getPrice(), 0);
+	}
+	
+	@Test
+	public void testSetPriceValid1(){
+		try{
+			recipe.setPrice("1");
+		} catch(RecipeException e) {
+			fail("Should parse Int");
+		}
+		
+		assertEquals(recipe.getPrice(), 1);
+	}
+	
+	@Test
+	public void testSetPriceValid0(){
+		try{
+			recipe.setPrice("0");
+		} catch(RecipeException e) {
+			fail("Should parse Int");
+		}
+		
+		assertEquals(recipe.getPrice(), 0);
+	}
+	
+	@Test
+	public void testSetPriceValidNominal(){
+		try{
+			recipe.setPrice("15");
+		} catch(RecipeException e) {
+			fail("Should parse Int");
+		}
+		
+		assertEquals(recipe.getPrice(), 15);
+	}
+	
+	@Test
+	public void testSetPriceInvalidABC(){
+		try{
+			recipe.setPrice("ABC");
+		} catch(RecipeException e) {
+			assertEquals(e.getMessage(), "Price must be a positive integer");
+		}
+	}
+	
+	@Test
+	public void testSetPriceInvalidDecimal(){
+		try{
+			recipe.setPrice("1.1");
+		} catch(RecipeException e) {
+			assertEquals(e.getMessage(), "Price must be a positive integer");
+		}
+	}
+	
+	@Test
+	public void testSetPriceInvalidNeg1(){
+		try{
+			recipe.setPrice("-1");
+		} catch(RecipeException e) {
+			assertEquals(e.getMessage(), "Price must be a positive integer");
+		}
+	}
+	
+	@Test
+	public void testSetPriceInvalidNull(){
+		try{
+			recipe.setPrice(null);
+		} catch(Exception e) {
+			assertEquals(recipe.getPrice(), 0);
+		}
 	}
 	
 	//**************************
@@ -57,7 +170,7 @@ class RecipeTest extends TestCase
 	
 	@Test
 	public void testGetAmntCoffee() {
-		assertEquals(0, recipe.getAmtCoffee());
+		assertEquals(recipe.getAmtCoffee(), 0);
 	}
 	
 	@Test
@@ -68,7 +181,7 @@ class RecipeTest extends TestCase
 			fail("Should parse Int");
 		}
 		
-		assertEquals(1, recipe.getAmtCoffee());
+		assertEquals(recipe.getAmtCoffee(), 1);
 	}
 	
 	@Test
@@ -79,7 +192,7 @@ class RecipeTest extends TestCase
 			fail("Should parse Int");
 		}
 		
-		assertEquals(0, recipe.getAmtCoffee());
+		assertEquals(recipe.getAmtCoffee(), 0);
 	}
 	
 	@Test
@@ -90,7 +203,7 @@ class RecipeTest extends TestCase
 			fail("Should parse Int");
 		}
 		
-		assertEquals(15, recipe.getAmtCoffee());
+		assertEquals(recipe.getAmtCoffee(), 15);
 	}
 	
 	@Test
@@ -125,7 +238,7 @@ class RecipeTest extends TestCase
 		try{
 			recipe.setAmtCoffee(null);
 		} catch(Exception e) {
-			assertEquals(0, recipe.getAmtCoffee());
+			assertEquals(recipe.getAmtCoffee(), 0);
 		}
 	}
 	
@@ -135,7 +248,7 @@ class RecipeTest extends TestCase
 	
 	@Test
 	public void testGetAmntMilk() {
-		assertEquals(0, recipe.getAmtMilk());
+		assertEquals(recipe.getAmtMilk(), 0);
 	}
 	
 	@Test
@@ -146,7 +259,7 @@ class RecipeTest extends TestCase
 			fail("Should parse Int");
 		}
 		
-		assertEquals(1, recipe.getAmtMilk());
+		assertEquals(recipe.getAmtMilk(),1);
 	}
 	
 	@Test
@@ -157,7 +270,7 @@ class RecipeTest extends TestCase
 			fail("Should parse Int");
 		}
 		
-		assertEquals(0, recipe.getAmtMilk());
+		assertEquals(recipe.getAmtMilk(), 0);
 	}
 	
 	@Test
@@ -168,7 +281,7 @@ class RecipeTest extends TestCase
 			fail("Should parse Int");
 		}
 		
-		assertEquals(15, recipe.getAmtMilk());
+		assertEquals(recipe.getAmtMilk(), 15);
 	}
 	
 	@Test
@@ -203,7 +316,7 @@ class RecipeTest extends TestCase
 		try{
 			recipe.setAmtMilk(null);
 		} catch(Exception e) {
-			assertEquals(0, recipe.getAmtMilk());
+			assertEquals(recipe.getAmtMilk(), 0);
 		}
 	}
 	
@@ -213,7 +326,7 @@ class RecipeTest extends TestCase
 	
 	@Test
 	public void testGetAmntSugar() {
-		assertEquals(0, recipe.getAmtSugar());
+		assertEquals(recipe.getAmtSugar(), 0);
 	}
 	
 	@Test
@@ -235,7 +348,7 @@ class RecipeTest extends TestCase
 			fail("Should parse Int");
 		}
 		
-		assertEquals(0, recipe.getAmtSugar());
+		assertEquals(recipe.getAmtSugar(), 0);
 	}
 	
 	@Test
@@ -246,7 +359,7 @@ class RecipeTest extends TestCase
 			fail("Should parse Int");
 		}
 		
-		assertEquals(15, recipe.getAmtSugar());
+		assertEquals(recipe.getAmtSugar(), 15);
 	}
 	
 	@Test
@@ -281,7 +394,7 @@ class RecipeTest extends TestCase
 		try{
 			recipe.setAmtSugar(null);
 		} catch(Exception e) {
-			assertEquals(0, recipe.getAmtSugar());
+			assertEquals(recipe.getAmtSugar(), 0);
 		}
 	}
 	
@@ -291,7 +404,7 @@ class RecipeTest extends TestCase
 	
 	@Test
 	public void testGetAmntChocolate() {
-		assertEquals( 0, recipe.getAmtChocolate());
+		assertEquals(recipe.getAmtChocolate(), 0);
 	}
 	
 	@Test
@@ -302,7 +415,7 @@ class RecipeTest extends TestCase
 			fail("Should parse Int");
 		}
 		
-		assertEquals(1, recipe.getAmtChocolate());
+		assertEquals(recipe.getAmtChocolate(), 1);
 	}
 	
 	@Test
@@ -313,7 +426,7 @@ class RecipeTest extends TestCase
 			fail("Should parse Int");
 		}
 		
-		assertEquals(0, recipe.getAmtChocolate());
+		assertEquals(recipe.getAmtChocolate(), 0);
 	}
 	
 	@Test
@@ -324,7 +437,7 @@ class RecipeTest extends TestCase
 			fail("Should parse Int");
 		}
 		
-		assertEquals(15, recipe.getAmtChocolate());
+		assertEquals(recipe.getAmtChocolate(), 15);
 	}
 	
 	@Test
@@ -359,7 +472,7 @@ class RecipeTest extends TestCase
 		try{
 			recipe.setAmtChocolate(null);
 		} catch(Exception e) {
-			assertEquals(0, recipe.getAmtChocolate());
+			assertEquals(recipe.getAmtChocolate(), 0);
 		}
 	}
 }
