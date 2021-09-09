@@ -60,7 +60,7 @@ class RecipeBookTest extends TestCase
 	@Test
 	public void testAddingRecipeTwice()
 	{
-		assertTrue(bk.addRecipe(recipes[0]));
+		bk.addRecipe(recipes[0]);
 		assertFalse(bk.addRecipe(recipes[0]));
 	}
 	
