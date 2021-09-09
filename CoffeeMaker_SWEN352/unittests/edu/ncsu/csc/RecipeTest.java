@@ -34,10 +34,17 @@ class RecipeTest extends TestCase
 		super.tearDown();
 	}
 	
+	//*************************
+	// Name Test cases
+	//*************************
 	@Test
 	public void testGetName() {
 		assertEquals("", recipe.getName()); // arguments: error message, arg1, arg2
 	}
+	
+	//*************************
+	// Price Test cases
+	//*************************
 	
 	@Test
 	public void testGetPrice() {
@@ -96,6 +103,15 @@ class RecipeTest extends TestCase
 	}
 	
 	@Test
+	public void testSetAmntCoffeeInvalidDecimal(){
+		try{
+			recipe.setAmtCoffee("1.1");
+		} catch(RecipeException e) {
+			assertEquals(e.getMessage(), "Units of coffee must be a positive integer");
+		}
+	}
+	
+	@Test
 	public void testSetAmntCoffeeInvalidNeg1(){
 		try{
 			recipe.setAmtCoffee("-1");
@@ -105,12 +121,94 @@ class RecipeTest extends TestCase
 	}
 	
 	@Test
+	public void testSetAmntCoffeeInvalidNull(){
+		try{
+			recipe.setAmtCoffee(null);
+		} catch(Exception e) {
+			assertEquals(0, recipe.getAmtCoffee());
+		}
+	}
+	
+	//*************************
+	//Amount Milk Test cases
+	//*************************
+	
+	@Test
 	public void testGetAmntMilk() {
 		assertEquals(0, recipe.getAmtMilk());
 	}
 	
+	@Test
+	public void testSetAmntMilkValid1(){
+		try{
+			recipe.setAmtMilk("1");
+		} catch(RecipeException e) {
+			fail("Should parse Int");
+		}
+		
+		assertEquals(1, recipe.getAmtMilk());
+	}
+	
+	@Test
+	public void testSetAmntMilkValid0(){
+		try{
+			recipe.setAmtMilk("0");
+		} catch(RecipeException e) {
+			fail("Should parse Int");
+		}
+		
+		assertEquals(0, recipe.getAmtMilk());
+	}
+	
+	@Test
+	public void testSetAmntMilkValidNominal(){
+		try{
+			recipe.setAmtMilk("15");
+		} catch(RecipeException e) {
+			fail("Should parse Int");
+		}
+		
+		assertEquals(15, recipe.getAmtMilk());
+	}
+	
+	@Test
+	public void testSetAmntMilkInvalidABC(){
+		try{
+			recipe.setAmtMilk("ABC");
+		} catch(RecipeException e) {
+			assertEquals(e.getMessage(), "Units of milk must be a positive integer");
+		}
+	}
+	
+	@Test
+	public void testSetAmntMilkInvalidDecimal(){
+		try{
+			recipe.setAmtMilk("1.1");
+		} catch(RecipeException e) {
+			assertEquals(e.getMessage(), "Units of milk must be a positive integer");
+		}
+	}
+	
+	@Test
+	public void testSetAmntMilkInvalidNeg1(){
+		try{
+			recipe.setAmtMilk("-1");
+		} catch(RecipeException e) {
+			assertEquals(e.getMessage(), "Units of milk must be a positive integer");
+		}
+	}
+	
+	@Test
+	public void testSetAmntMilkInvalidNull(){
+		try{
+			recipe.setAmtMilk(null);
+		} catch(Exception e) {
+			assertEquals(0, recipe.getAmtMilk());
+		}
+	}
+	
 	//*************************
-	//Amount sugar Test cases
+	//Amount Sugar Test cases
 	//*************************
 	
 	@Test
@@ -161,6 +259,15 @@ class RecipeTest extends TestCase
 	}
 	
 	@Test
+	public void testSetAmntSugarInvalidDecimal(){
+		try{
+			recipe.setAmtSugar("1.1");
+		} catch(RecipeException e) {
+			assertEquals(e.getMessage(), "Units of sugar must be a positive integer");
+		}
+	}
+	
+	@Test
 	public void testSetAmntSugarInvalidNeg1(){
 		try{
 			recipe.setAmtSugar("-1");
@@ -169,6 +276,14 @@ class RecipeTest extends TestCase
 		}
 	}
 	
+	@Test
+	public void testSetAmntSugarInvalidNull(){
+		try{
+			recipe.setAmtSugar(null);
+		} catch(Exception e) {
+			assertEquals(0, recipe.getAmtSugar());
+		}
+	}
 	
 	//*****************************
 	// Amount Chocolate Test cases
@@ -222,11 +337,29 @@ class RecipeTest extends TestCase
 	}
 	
 	@Test
+	public void testSetAmntChocolateInvalidDecimal(){
+		try{
+			recipe.setAmtChocolate("1.1");
+		} catch(RecipeException e) {
+			assertEquals(e.getMessage(), "Units of chocolate must be a positive integer");
+		}
+	}
+	
+	@Test
 	public void testSetAmntChocolateInvalidNeg1(){
 		try{
 			recipe.setAmtChocolate("-1");
 		} catch(RecipeException e) {
 			assertEquals(e.getMessage(), "Units of chocolate must be a positive integer");
+		}
+	}
+	
+	@Test
+	public void testSetAmntChocolateInvalidNull(){
+		try{
+			recipe.setAmtChocolate(null);
+		} catch(Exception e) {
+			assertEquals(0, recipe.getAmtChocolate());
 		}
 	}
 }
