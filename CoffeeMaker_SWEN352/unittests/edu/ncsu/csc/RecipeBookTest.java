@@ -18,7 +18,7 @@ class RecipeBookTest extends TestCase
 {	
 	private RecipeBook bk;
 	
-	private Recipe[] r;
+	private Recipe[] recipes;
 	
 	@BeforeEach
 	public void setUp() throws Exception
@@ -27,12 +27,12 @@ class RecipeBookTest extends TestCase
 		
 		bk = new RecipeBook();
 		
-		r = new Recipe[5];
+		recipes = new Recipe[5];
 		
-		for(int i = 0; i < r.length; i++)
+		for(int i = 0; i < recipes.length; i++)
 		{
-			r[i] = new Recipe();
-			r[i].setName("r" + i);
+			recipes[i] = new Recipe();
+			recipes[i].setName("r" + i);
 		}
 	}
 
@@ -42,15 +42,7 @@ class RecipeBookTest extends TestCase
 		super.tearDown();
 		
 		bk = null;
-		r = null;
-	}
-	
-	private void assertNoChanges()
-	{
-		for(int i = 0; i < r.length; i++)
-		{
-			assertEquals("r" + i, r[i].getName());
-		}
+		recipes = null;
 	}
 	
 	@Test
@@ -62,45 +54,37 @@ class RecipeBookTest extends TestCase
 	@Test
 	public void testAddingRecipe()
 	{
-		assertTrue(bk.addRecipe(r[0]));
-		
-		assertNoChanges();
+		assertTrue(bk.addRecipe(recipes[0]));
 	}
 	
 	@Test
 	public void testAddingRecipeTwice()
 	{
-		assertTrue(bk.addRecipe(r[0]));
-		assertFalse(bk.addRecipe(r[0]));
-		
-		assertNoChanges();
+		assertTrue(bk.addRecipe(recipes[0]));
+		assertFalse(bk.addRecipe(recipes[0]));
 	}
 	
 	@Test
 	public void testRecipeInRecipes()
 	{
-		bk.addRecipe(r[0]);
-		assertEquals(r[0], bk.getRecipes()[0]);
-		
-		assertNoChanges();
+		bk.addRecipe(recipes[0]);
+		assertEquals(recipes[0], bk.getRecipes()[0]);
 	}
 	
 	@Test
 	public void testAddingTwoRecipes()
 	{
-		bk.addRecipe(r[0]);
-		assertTrue(bk.addRecipe(r[1]));
-		
-		assertNoChanges();
+		bk.addRecipe(recipes[0]);
+		assertTrue(bk.addRecipe(recipes[1]));
 	}
 	
 	@Test
 	public void testAddingTwoThenDeletingLast()
 	{
-		bk.addRecipe(r[0]);
-		bk.addRecipe(r[1]);
+		bk.addRecipe(recipes[0]);
+		bk.addRecipe(recipes[1]);
 		
-		assertEquals(r[1].getName(), bk.deleteRecipe(1));
+		assertEquals(recipes[1].getName(), bk.deleteRecipe(1));
 	}
 	
 	@Test
@@ -145,31 +129,29 @@ class RecipeBookTest extends TestCase
 	@Test
 	public void testAddingFour()
 	{
-		bk.addRecipe(r[0]);
-		bk.addRecipe(r[1]);
-		bk.addRecipe(r[2]);
-		assertTrue(bk.addRecipe(r[3]));
+		bk.addRecipe(recipes[0]);
+		bk.addRecipe(recipes[1]);
+		bk.addRecipe(recipes[2]);
+		assertTrue(bk.addRecipe(recipes[3]));
 	}
 	
 	
 	@Test
 	public void testAddingFive()
 	{
-		bk.addRecipe(r[0]);
-		bk.addRecipe(r[1]);
-		bk.addRecipe(r[2]);
-		bk.addRecipe(r[3]);
+		bk.addRecipe(recipes[0]);
+		bk.addRecipe(recipes[1]);
+		bk.addRecipe(recipes[2]);
+		bk.addRecipe(recipes[3]);
 		
-		assertFalse(bk.addRecipe(r[4]));
+		assertFalse(bk.addRecipe(recipes[4]));
 	}
 	
 	@Test
 	public void testDelete()
 	{
-		bk.addRecipe(r[0]);
-		assertEquals(r[0].getName(), bk.deleteRecipe(0));		
-		
-		assertNoChanges();
+		bk.addRecipe(recipes[0]);
+		assertEquals(recipes[0].getName(), bk.deleteRecipe(0));		
 	}
 	
 	@Test
@@ -187,11 +169,9 @@ class RecipeBookTest extends TestCase
 	@Test
 	public void testEditRecipeWithNull()
 	{		
-		bk.addRecipe(r[0]);
+		bk.addRecipe(recipes[0]);
 		
-		assertEquals(r[0].getName(), bk.editRecipe(0, null));
-		
-		assertNoChanges();
+		assertEquals(recipes[0].getName(), bk.editRecipe(0, null));
 	}
 	
 	@Test

@@ -75,9 +75,6 @@ public class RecipeBook {
 		if (recipeArray[recipeToEdit] != null) {
 			String recipeName = recipeArray[recipeToEdit].getName();
 			
-			// ERROR USED TO BE HERE - UNNEEDED SET
-			// newRecipe.setName("");
-			
 			recipeArray[recipeToEdit] = newRecipe;
 			return recipeName;
 		} else {
