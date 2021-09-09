@@ -10,6 +10,10 @@ import coffeemaker.Recipe;
 import coffeemaker.RecipeBook;
 import junit.framework.TestCase;
 
+/**
+ * Tests for the recipe book test.  Found 1 bug in {@link RecipeBook#editRecipe(int, Recipe)}.  More details commented in the function
+ * @author Anthony Tornetta
+ */
 class RecipeBookTest extends TestCase
 {	
 	private RecipeBook bk;
