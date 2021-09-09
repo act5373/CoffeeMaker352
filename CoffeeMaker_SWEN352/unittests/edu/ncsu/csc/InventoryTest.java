@@ -82,4 +82,10 @@ class InventoryTest extends TestCase{
 		
 		assertEquals(16, inventory.getChocolate());
 	}
+	
+	@Test
+	public void testIsEnoughAtZero()
+	{
+		inventory.enoughIngredients(null);
+	}
 }
