@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import junit.framework.TestCase;
 
 
-//Written by Joseph Saltalmacchia
+//Written by: Joseph Saltalmacchia
 //Test class for Recipe class in coffeemaker
 //note: we use "BerforeEach" and "AfterEach" instead of "Before" and "After" for the setup and teardown functions because we are using Junit 5
 class RecipeTest extends TestCase
@@ -61,14 +61,6 @@ class RecipeTest extends TestCase
 		recipe.setName(null);
 		
 		assertEquals(recipe.getName(), "");
-	}
-	
-	@Test
-	public void testSetnameValidNameToNull() {
-		recipe.setName("Apples");
-		recipe.setName(null);
-		
-		assertEquals(recipe.getName(), "Apples");
 	}
 	
 	//*************************
@@ -474,5 +466,75 @@ class RecipeTest extends TestCase
 		} catch(Exception e) {
 			assertEquals(recipe.getAmtChocolate(), 0);
 		}
+	}
+	
+	//*****************************
+	// equals Test cases
+	//*****************************
+	
+	//note: this cannot get 100% coverage because the if on line 178 of the recipe class can never be true
+	
+	@Test
+	public void testEqualsValidSelfCompare() {
+		assertTrue(recipe.equals(recipe));		
+	}
+	
+	@Test
+	public void testEqualsValidNewRecipe() {
+		Recipe recipeTwo = new Recipe();
+		assertTrue(recipe.equals(recipeTwo));
+	}
+	
+	@Test
+	public void testEqualsValid() {
+		Recipe recipeTwo = new Recipe();
+		recipeTwo.setName("PB&J");
+		recipe.setName("PB&J");
+		assertTrue(recipe.equals(recipeTwo));
+	}
+	
+	@Test
+	public void testEqualsInvalidNull() {
+		assertFalse(recipe.equals(null));
+	}
+	
+	@Test
+	public void testequalsInvalidWrongClass() {
+		String word = "word";
+		
+		assertFalse(recipe.equals(word));
+	}
+	
+	@Test
+	public void testEqualsInvalidName() {
+		Recipe recipeTwo = new Recipe();
+		recipeTwo.setName("PB&J");
+		recipe.setName("Gumbo");
+		assertFalse(recipe.equals(recipeTwo));
+	}
+	
+	//*****************************
+	// hashCode Test cases
+	//*****************************
+	
+	@Test
+	public void testHashCode() {
+		assertEquals(recipe.hashCode(), 31);  //this is valid because the hashcode of an empty string is zero, and the result should be (31 * 1 + 0)
+	}
+	
+	@Test
+	public void testHashCodeSameName() {
+		Recipe recipeTwo = new Recipe();
+		recipeTwo.setName("PB&J");
+		recipe.setName("PB&J");
+		assertEquals(recipe.hashCode(), recipeTwo.hashCode()); //hashcode is determined by name
+	}
+	
+	@Test
+	public void testHashCodeDifferentName() {
+		Recipe recipeTwo = new Recipe();
+		recipeTwo.setName("PB&J");
+		recipe.setName("Gumbo");
+		assertTrue(recipe.hashCode() != recipeTwo.hashCode()); //hashcode is determined by name
 	}
 }
