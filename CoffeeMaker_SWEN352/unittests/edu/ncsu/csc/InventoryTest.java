@@ -408,5 +408,464 @@ class InventoryTest extends TestCase{
 		assertEquals(15, inventory.getSugar());
 	}
 	
+	@Test
+	public void testEnoughIngredientsChoc1()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtChocolate("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setChocolate(0);
+		assertFalse(inventory.enoughIngredients(r));
+	}
 	
+	@Test
+	public void testEnoughIngredientsChoc2()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtChocolate("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setChocolate(1);
+		assertTrue(inventory.enoughIngredients(r));
+	}
+	
+	@Test
+	public void testEnoughIngredientsChoc3()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtChocolate("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setChocolate(2);
+		assertTrue(inventory.enoughIngredients(r));
+	}
+	
+	@Test
+	public void testEnoughIngredientsSugar1()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtSugar("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setSugar(0);
+		assertFalse(inventory.enoughIngredients(r));
+	}
+	
+	@Test
+	public void testEnoughIngredientsSugar2()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtSugar("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setSugar(1);
+		assertTrue(inventory.enoughIngredients(r));
+	}
+	
+	@Test
+	public void testEnoughIngredientsSugar3()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtSugar("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setSugar(2);
+		assertTrue(inventory.enoughIngredients(r));
+	}
+	
+	@Test
+	public void testEnoughIngredientsMilk1()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtMilk("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setMilk(0);
+		assertFalse(inventory.enoughIngredients(r));
+	}
+	
+	@Test
+	public void testEnoughIngredientsMilk2()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtMilk("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setMilk(1);
+		assertTrue(inventory.enoughIngredients(r));
+	}
+	
+	@Test
+	public void testEnoughIngredientsMilk3()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtMilk("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setMilk(2);
+		assertTrue(inventory.enoughIngredients(r));
+	}
+	
+	@Test
+	public void testEnoughIngredientsCoffee1()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtCoffee("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setCoffee(0);
+		assertFalse(inventory.enoughIngredients(r));
+	}
+	
+	@Test
+	public void testEnoughIngredientsCoffee2()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtChocolate("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setCoffee(1);
+		assertTrue(inventory.enoughIngredients(r));
+	}
+	
+	@Test
+	public void testEnoughIngredientsCoffee3()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtCoffee("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setCoffee(2);
+		assertTrue(inventory.enoughIngredients(r));
+	}
+	
+	
+	@Test
+	public void testuseIngredientsChoc1()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtChocolate("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setChocolate(0);
+		assertFalse(inventory.useIngredients(r));
+	}
+	
+	@Test
+	public void testuseIngredientsChoc2()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtChocolate("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setChocolate(1);
+		assertTrue(inventory.useIngredients(r));
+	}
+	
+	@Test
+	public void testuseIngredientsChoc3()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtChocolate("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setChocolate(2);
+		assertTrue(inventory.useIngredients(r));
+	}
+	
+	@Test
+	public void testuseIngredientsSugar1()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtSugar("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setSugar(0);
+		assertFalse(inventory.useIngredients(r));
+	}
+	
+	@Test
+	public void testuseIngredientsSugar2()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtSugar("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setSugar(1);
+		assertTrue(inventory.useIngredients(r));
+	}
+	
+	@Test
+	public void testuseIngredientsSugar3()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtSugar("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setSugar(2);
+		assertTrue(inventory.useIngredients(r));
+	}
+	
+	@Test
+	public void testuseIngredientsMilk1()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtMilk("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setMilk(0);
+		assertFalse(inventory.useIngredients(r));
+	}
+	
+	@Test
+	public void testuseIngredientsMilk2()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtMilk("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setMilk(1);
+		assertTrue(inventory.useIngredients(r));
+	}
+	
+	@Test
+	public void testuseIngredientsMilk3()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtMilk("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setMilk(2);
+		assertTrue(inventory.useIngredients(r));
+	}
+	
+	@Test
+	public void testuseIngredientsCoffee1()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtCoffee("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setCoffee(0);
+		assertFalse(inventory.useIngredients(r));
+	}
+	
+	@Test
+	public void testuseIngredientsCoffee2()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtChocolate("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setCoffee(1);
+		assertTrue(inventory.useIngredients(r));
+	}
+	
+	@Test
+	public void testuseIngredientsCoffee3()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtCoffee("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setCoffee(2);
+		assertTrue(inventory.useIngredients(r));
+	}
+	
+	@Test
+	public void testIfCoffeeGoesDown()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtCoffee("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setCoffee(2);
+		
+		inventory.useIngredients(r);
+	
+		assertEquals(1, inventory.getCoffee());
+	}
+	
+	@Test
+	public void testIfSugarGoesDown()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtSugar("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setSugar(2);
+		
+		inventory.useIngredients(r);
+		
+		assertEquals(1, inventory.getSugar());
+	}
+	
+	@Test
+	public void testIfMilkGoesDown()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtMilk("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setMilk(2);
+		
+		inventory.useIngredients(r);
+		
+		assertEquals(1, inventory.getMilk());
+	}
+	
+	@Test
+	public void testIfChocGoesDown()
+	{
+		Recipe r = new Recipe();
+		try {
+			r.setAmtChocolate("1");
+		} 
+		catch (RecipeException e)
+		{
+			e.printStackTrace();
+		}
+		
+		inventory.setChocolate(2);
+		
+		inventory.useIngredients(r);
+		
+		assertEquals(1, inventory.getChocolate());
+	}
 }
