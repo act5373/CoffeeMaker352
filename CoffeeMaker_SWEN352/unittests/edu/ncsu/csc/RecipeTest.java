@@ -502,7 +502,7 @@ class RecipeTest extends TestCase
 	public void testequalsInvalidWrongClass() {
 		String word = "word";
 		
-		assertFalse(recipe.getName().equals(word));
+		assertFalse(recipe.equals(word));
 	}
 	
 	@Test
