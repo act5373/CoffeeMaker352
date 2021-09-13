@@ -363,7 +363,7 @@ class InventoryTest extends TestCase{
 			inventory.addSugar("1");
 		}
 		catch(InventoryException e) {
-			assertEquals(e.getMessage(), "Units of sugar must be a positive integer");
+			fail("Units of sugar are a positive integer");
 		}
 		
 		assertEquals(16, inventory.getSugar());
