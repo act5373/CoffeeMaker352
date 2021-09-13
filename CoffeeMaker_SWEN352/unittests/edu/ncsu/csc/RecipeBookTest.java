@@ -191,4 +191,12 @@ class RecipeBookTest extends TestCase
 			bk.editRecipe(4, null);
 		});
 	}
+	
+	@Test
+	public void testDeletion()
+	{
+		bk.addRecipe(recipes[0]);
+		bk.deleteRecipe(0);
+		assertEquals(null, bk.getRecipes()[0]);
+	}
 }
