@@ -408,5 +408,29 @@ class InventoryTest extends TestCase{
 		assertEquals(15, inventory.getSugar());
 	}
 	
+		//*****************************
+		// To String Test case
+		//*****************************
+	
+	@Test
+	public void CheckToString() {
+		
+		int num = 15;
+		StringBuffer buf = new StringBuffer();
+    	buf.append("Coffee: ");
+    	buf.append(num);
+    	buf.append("\n");
+    	buf.append("Milk: ");
+    	buf.append(num);
+    	buf.append("\n");
+    	buf.append("Sugar: ");
+    	buf.append(num);
+    	buf.append("\n");
+    	buf.append("Chocolate: ");
+    	buf.append(num);
+    	buf.append("\n");
+		
+		assertEquals(buf.toString(), inventory.toString());
+	}
 	
 }
