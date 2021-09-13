@@ -31,9 +31,13 @@ class InventoryTest extends TestCase{
 		inventory = null;
 		super.tearDown();
 	}
+	
+		//*****************************
+		// Get Chocolate Test cases
+		//*****************************
 
 	@Test
-	public void testChocolate() {
+	public void getChocolate() {
 		assertEquals(15, inventory.getChocolate());
 		
 	}
@@ -67,7 +71,7 @@ class InventoryTest extends TestCase{
 	}
 	
 		//*****************************
-		// Set Chocolate Test cases
+		// Add Chocolate Test cases
 		//*****************************
 
 	@Test
@@ -114,4 +118,56 @@ class InventoryTest extends TestCase{
 		
 		assertEquals(15, inventory.getChocolate());
 	}
+	
+	@Test
+	public void addChocolateDecimal() {
+		
+		try{
+			inventory.addChocolate(".1");
+		}
+		catch(InventoryException e) {
+			assertEquals(e.getMessage(), "Units of chocolate must be a positive integer");
+		}
+		
+		assertEquals(15, inventory.getChocolate());
+	}
+
+		//*****************************
+		// Get Coffee Test cases
+		//*****************************
+		
+	@Test
+	public void getCoffee() {
+		assertEquals(15, inventory.getCoffee());
+		
+	}
+	
+		//*****************************
+		// Set Coffee Test cases
+		//*****************************
+	
+	@Test
+	public void setCoffee1() {
+		
+		inventory.setCoffee(15);
+		
+		assertEquals(15, inventory.getCoffee());
+	}
+	
+	@Test
+	public void setCoffee2() {
+		
+		inventory.setCoffee(20);
+		
+		assertEquals(20, inventory.getCoffee());
+	}
+	
+	@Test
+	public void setCoffeeinvaild() {
+		
+		inventory.setCoffee(-1);
+		
+		assertEquals(15, inventory.getCoffee());
+	}
+	
 }
