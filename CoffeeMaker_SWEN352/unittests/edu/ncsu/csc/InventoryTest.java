@@ -86,12 +86,6 @@ class InventoryTest extends TestCase{
 		
 		assertEquals(16, inventory.getChocolate());
 	}
-	
-	@Test
-	public void testIsEnoughAtZero()
-	{
-		inventory.enoughIngredients(null);
-	}
 
 	@Test
 	public void addChocolateStringOne() {
@@ -169,5 +163,250 @@ class InventoryTest extends TestCase{
 		
 		assertEquals(15, inventory.getCoffee());
 	}
+	
+		//*****************************
+		// Add Coffee Test cases
+		//*****************************
+	
+	@Test
+	public void addCoffeeString1() {
+		
+		try{
+			inventory.addCoffee("1");
+		}
+		catch(InventoryException e) {
+			assertEquals(e.getMessage(), "Units of coffee must be a positive integer");
+		}
+		
+		assertEquals(16, inventory.getCoffee());
+	}
+	
+	@Test
+	public void addCoffeeStringOne() {
+		
+		try{
+			inventory.addCoffee("one");
+		}
+		catch(InventoryException e) {
+			assertEquals(e.getMessage(), "Units of coffee must be a positive integer");
+		}
+		
+		assertEquals(15, inventory.getCoffee());
+	}
+	
+	@Test
+	public void addCoffeeNegative() {
+		
+		try{
+			inventory.addCoffee("-1");
+		}
+		catch(InventoryException e) {
+			assertEquals(e.getMessage(), "Units of coffee must be a positive integer");
+		}
+		
+		assertEquals(15, inventory.getCoffee());
+	}
+	
+	@Test
+	public void addCoffeeDecimal() {
+		
+		try{
+			inventory.addCoffee(".1");
+		}
+		catch(InventoryException e) {
+			assertEquals(e.getMessage(), "Units of coffee must be a positive integer");
+		}
+		
+		assertEquals(15, inventory.getCoffee());
+	}
+
+		//*****************************
+		// Get Milk Test cases
+		//*****************************
+	
+	@Test
+	public void getMilk() {
+		assertEquals(15, inventory.getMilk());
+		
+	}
+	
+		//*****************************
+		// Set Chocolate Test cases
+		//*****************************
+	
+	@Test
+	public void setMilk1() {
+		
+		inventory.setMilk(15);
+		
+		assertEquals(15, inventory.getMilk());
+	}
+	
+	@Test
+	public void setMilk2() {
+		
+		inventory.setMilk(20);
+		
+		assertEquals(20, inventory.getMilk());
+	}
+	
+	@Test
+	public void setMilkinvaild() {
+		
+		inventory.setMilk(-1);
+		
+		assertEquals(15, inventory.getMilk());
+	}
+	
+		//*****************************
+		// Add Milk Test cases
+		//*****************************
+	
+	@Test
+	public void addMilkString1() {
+		
+		try{
+			inventory.addMilk("1");
+		}
+		catch(InventoryException e) {
+			assertEquals(e.getMessage(), "Units of milk must be a positive integer");
+		}
+		
+		assertEquals(16, inventory.getMilk());
+	}
+	
+	@Test
+	public void addMilkStringOne() {
+		
+		try{
+			inventory.addMilk("one");
+		}
+		catch(InventoryException e) {
+			assertEquals(e.getMessage(), "Units of milk must be a positive integer");
+		}
+		
+		assertEquals(15, inventory.getMilk());
+	}
+	
+	@Test
+	public void addMilkNegative() {
+		
+		try{
+			inventory.addMilk("-1");
+		}
+		catch(InventoryException e) {
+			assertEquals(e.getMessage(), "Units of milk must be a positive integer");
+		}
+		
+		assertEquals(15, inventory.getMilk());
+	}
+	
+	@Test
+	public void addMilkDecimal() {
+		
+		try{
+			inventory.addMilk(".1");
+		}
+		catch(InventoryException e) {
+			assertEquals(e.getMessage(), "Units of milk must be a positive integer");
+		}
+		
+		assertEquals(15, inventory.getMilk());
+	}
+
+		//*****************************
+		// Get Sugar Test cases
+		//*****************************
+	
+	@Test
+	public void geSugar() {
+		assertEquals(15, inventory.getSugar());
+		
+	}
+	
+		//*****************************
+		// Set Chocolate Test cases
+		//*****************************
+	
+	@Test
+	public void setSugar1() {
+		
+		inventory.setSugar(15);
+		
+		assertEquals(15, inventory.getSugar());
+	}
+	
+	@Test
+	public void setSugar2() {
+		
+		inventory.setSugar(20);
+		
+		assertEquals(20, inventory.getSugar());
+	}
+	
+	@Test
+	public void setSugarinvaild() {
+		
+		inventory.setSugar(-1);
+		
+		assertEquals(15, inventory.getSugar());
+	}
+	
+		//*****************************
+		// Add Milk Test cases
+		//*****************************
+	
+	@Test
+	public void addSugarString1() {
+		
+		try{
+			inventory.addSugar("1");
+		}
+		catch(InventoryException e) {
+			assertEquals(e.getMessage(), "Units of sugar must be a positive integer");
+		}
+		
+		assertEquals(16, inventory.getSugar());
+	}
+	
+	@Test
+	public void addSugarStringOne() {
+		
+		try{
+			inventory.addSugar("one");
+		}
+		catch(InventoryException e) {
+			assertEquals(e.getMessage(), "Units of sugar must be a positive integer");
+		}
+		
+		assertEquals(15, inventory.getSugar());
+	}
+	
+	@Test
+	public void addSugarNegative() {
+		
+		try{
+			inventory.addSugar("-1");
+		}
+		catch(InventoryException e) {
+			assertEquals(e.getMessage(), "Units of sugar must be a positive integer");
+		}
+		
+		assertEquals(15, inventory.getSugar());
+	}
+	
+	@Test
+	public void addSugarDecimal() {
+		
+		try{
+			inventory.addSugar(".1");
+		}
+		catch(InventoryException e) {
+			assertEquals(e.getMessage(), "Units of sugar must be a positive integer");
+		}
+		
+		assertEquals(15, inventory.getSugar());
+	}
+	
 	
 }
