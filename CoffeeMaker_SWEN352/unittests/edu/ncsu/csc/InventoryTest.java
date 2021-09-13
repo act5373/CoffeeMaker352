@@ -1,16 +1,13 @@
 package edu.ncsu.csc;
 
-import coffeemaker.Inventory;
-import coffeemaker.Recipe;
-import coffeemaker.exceptions.*;
-
-import static org.junit.Assert.fail;
-
 import org.junit.After;
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import coffeemaker.Inventory;
+import coffeemaker.Recipe;
+import coffeemaker.exceptions.InventoryException;
+import coffeemaker.exceptions.RecipeException;
 import junit.framework.TestCase;
 
 
